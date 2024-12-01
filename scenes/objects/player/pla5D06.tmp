@@ -5,21 +5,21 @@
 [ext_resource type="AudioStream" uid="uid://du4d2lhff6bep" path="res://assets/sounds/sfx/jump.wav" id="3_pw5y6"]
 [ext_resource type="AudioStream" uid="uid://c1310kkbnj15w" path="res://assets/sounds/sfx/hurt.wav" id="4_41sdc"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4xo7t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n26c"]
 atlas = ExtResource("1_xlks3")
-region = Rect2(64, 160, 32, 32)
+region = Rect2(0, 224, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uewhq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_moqri"]
 atlas = ExtResource("1_xlks3")
-region = Rect2(96, 160, 32, 32)
+region = Rect2(32, 224, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lytk8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v06s"]
 atlas = ExtResource("1_xlks3")
-region = Rect2(128, 160, 32, 32)
+region = Rect2(64, 224, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_13mjm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mne0p"]
 atlas = ExtResource("1_xlks3")
-region = Rect2(160, 160, 32, 32)
+region = Rect2(96, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xf33v"]
 atlas = ExtResource("1_xlks3")
@@ -109,20 +109,20 @@ region = Rect2(224, 96, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4xo7t")
+"texture": SubResource("AtlasTexture_1n26c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uewhq")
+"texture": SubResource("AtlasTexture_moqri")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lytk8")
+"texture": SubResource("AtlasTexture_6v06s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_13mjm")
+"texture": SubResource("AtlasTexture_mne0p")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
-"speed": 10.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -296,16 +296,17 @@ _data = {
 "jump": SubResource("Animation_il2n3")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_animated_sprite")]
 collision_layer = 2
 script = ExtResource("1_h271b")
-animated_sprite = NodePath("Sprite")
+_animated_sprite = NodePath("Sprite")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_akd8t")
-animation = &"idle"
-autoplay = "idle"
+animation = &"dead"
+frame = 3
+frame_progress = 1.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
