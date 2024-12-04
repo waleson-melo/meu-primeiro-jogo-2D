@@ -1,13 +1,39 @@
-[gd_scene load_steps=6 format=4 uid="uid://cep00cfvrum6n"]
+[gd_scene load_steps=10 format=4 uid="uid://cep00cfvrum6n"]
 
+[ext_resource type="Script" path="res://scripts/game_manager/game_manager.gd" id="1_osyxv"]
 [ext_resource type="PackedScene" uid="uid://ccy00tia31x4r" path="res://scenes/objects/player/player.tscn" id="1_wmcc1"]
 [ext_resource type="PackedScene" uid="uid://cgqrw14trpb76" path="res://scenes/objects/world/world.tscn" id="2_stwb3"]
 [ext_resource type="PackedScene" uid="uid://dm10awq2yboss" path="res://scenes/objects/utils/kill_zone.tscn" id="3_ykluu"]
 [ext_resource type="PackedScene" uid="uid://vd1vm027g0cc" path="res://scenes/objects/enemy/enemy.tscn" id="4_adr2f"]
+[ext_resource type="PackedScene" uid="uid://o0hg0g7t27mx" path="res://scenes/objects/coin/coin.tscn" id="5_dvdp3"]
+[ext_resource type="FontFile" uid="uid://b6lxho4sv818" path="res://assets/fonts/PixelOperator8.ttf" id="7_groeo"]
+[ext_resource type="FontFile" uid="uid://cxberev14fi46" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="8_aq52b"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lh7ql"]
 
 [node name="TesteLevel" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("_score_label")]
+unique_name_in_owner = true
+script = ExtResource("1_osyxv")
+_score_label = NodePath("Canvas/Score")
+
+[node name="Canvas" type="CanvasLayer" parent="GameManager"]
+
+[node name="Label" type="Label" parent="GameManager/Canvas"]
+offset_top = 8.0
+offset_right = 92.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("7_groeo")
+text = "Pontos:"
+
+[node name="Score" type="Label" parent="GameManager/Canvas"]
+offset_left = 96.0
+offset_top = 8.0
+offset_right = 188.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("8_aq52b")
+text = "0"
 
 [node name="World" parent="." instance=ExtResource("2_stwb3")]
 
@@ -30,5 +56,49 @@ shape = SubResource("WorldBoundaryShape2D_lh7ql")
 
 [node name="Enemy" parent="." instance=ExtResource("4_adr2f")]
 position = Vector2(89, 41)
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("5_dvdp3")]
+position = Vector2(23, 33)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("5_dvdp3")]
+position = Vector2(36, 127)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("5_dvdp3")]
+position = Vector2(64, 127)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("5_dvdp3")]
+position = Vector2(95, 127)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("5_dvdp3")]
+position = Vector2(298, 153)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("5_dvdp3")]
+position = Vector2(438, 41)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("5_dvdp3")]
+position = Vector2(786, 6)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("5_dvdp3")]
+position = Vector2(881, 5)
+
+[node name="Coin9" parent="Coins" instance=ExtResource("5_dvdp3")]
+position = Vector2(1031, 85)
+
+[node name="Coin10" parent="Coins" instance=ExtResource("5_dvdp3")]
+position = Vector2(1049, 85)
+
+[node name="Coin11" parent="Coins" instance=ExtResource("5_dvdp3")]
+position = Vector2(1067, 84)
+
+[node name="Coin12" parent="Coins" instance=ExtResource("5_dvdp3")]
+position = Vector2(1105, 58)
+
+[node name="Coin13" parent="Coins" instance=ExtResource("5_dvdp3")]
+position = Vector2(1120, 49)
+
+[node name="Coin14" parent="Coins" instance=ExtResource("5_dvdp3")]
+position = Vector2(1138, 47)
 
 [editable path="World"]
